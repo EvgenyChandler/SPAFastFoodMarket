@@ -1,6 +1,10 @@
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 const dbConnect = require('./config/dbConnect');
+const Category = require('./models/category.model');
+// eslint-disable-next-line no-unused-vars
+const Item = require('./models/item.model');
 
 const app = express();
 
@@ -8,6 +12,13 @@ const PORT = 4200;
 
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+
+app.get('/api/v1', async (req, res) => {
+  const allCategory = await Category.find().populate('products');
+  return res.json(allCategory).status(200);
+});
 
 async function start() {
   try {
