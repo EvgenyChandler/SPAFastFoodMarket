@@ -1,4 +1,8 @@
-import { ADD_SHOPPING_CARD, DELETE_SHOPPING_CARD } from "../types/type";
+import {
+  ADD_SHOPPING_CARD,
+  DELETE_SHOPPING_CARD,
+  RESET_SHOPPING_CARD,
+} from "../types/type";
 
 export default function shoppingCartReducer(state = [], action) {
   switch (action.type) {
@@ -9,6 +13,9 @@ export default function shoppingCartReducer(state = [], action) {
       const index = state.findIndex(item => item._id === action.payload);
       return state.filter((_, i) => i !== index);
 
+    case RESET_SHOPPING_CARD:
+      return [];
+    
     default:
       return state;
   }

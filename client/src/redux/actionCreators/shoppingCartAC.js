@@ -1,4 +1,8 @@
-import { ADD_SHOPPING_CARD, DELETE_SHOPPING_CARD } from "../types/type";
+import {
+  ADD_SHOPPING_CARD,
+  DELETE_SHOPPING_CARD,
+  RESET_SHOPPING_CARD,
+} from "../types/type";
 
 
 export const addShoppingCard = (item) => {
@@ -14,3 +18,9 @@ export const deleteShoppingCard = (id) => {
     payload: id,
   };
 };
+
+export const resetShoppingCard = () => {
+  return {
+    type: RESET_SHOPPING_CARD,
+  };
+}

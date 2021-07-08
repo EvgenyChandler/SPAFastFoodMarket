@@ -1,11 +1,15 @@
 import { AppBar, Container, Toolbar, IconButton, Box, Button } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import setOrder from '../../hooks/setOrder';
+import { resetShoppingCard } from '../../redux/actionCreators/shoppingCartAC';
 import useStyles from './navbar.style';
 
 export default function Navbar() {
   const classes = useStyles()
+
+  const dispatch = useDispatch()
 
   const shoppingCard = useSelector((state) => state.shoppingCart)
 
@@ -13,7 +17,7 @@ export default function Navbar() {
 
   return (
     <AppBar className={classes.navbar}>
-      <Container className={classes.root} color="inherit">
+      <Container className={classes.root}>
         <Toolbar>
           <IconButton edge="start" aria-label="menu">
             <MenuIcon />
@@ -28,6 +32,10 @@ export default function Navbar() {
         </Box>
 
         <Button
+          onClick={() => {
+            setOrder(shoppingCard)
+            dispatch(resetShoppingCard())
+          }}
           className={classes.shoppingButton}
           variant="contained"
           endIcon={<ShoppingBasketIcon />}
@@ -35,6 +43,6 @@ export default function Navbar() {
           {sumCard} ₽
         </Button>
       </Container>
-    </AppBar>
+     </AppBar>
   )
 }

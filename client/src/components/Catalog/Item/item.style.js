@@ -11,9 +11,8 @@ const useStyles = makeStyles(() => ({
     margin: "10px",
   },
   boxImg: {
-    minHeight: "208px",
-    minWidth: "208px",
-    background: "url(img/Burger.jpg) center no-repeat",
+    maxHeight: "208px",
+    maxWidth: "208px",
   },
   boxButton: {
     display: "flex",

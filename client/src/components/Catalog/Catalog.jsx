@@ -2,8 +2,9 @@ import Item from "./Item/Item"
 import { Box, Typography, Grid } from "@material-ui/core";
 import useStyles from "./catalog.style";
 import { useAppContext } from "../../context/appContext";
+import { useRef } from "react";
 
-export default function Catalog({ name, products }) {
+export default function Catalog({ name, products, id }) {
 
   const classes = useStyles()
 
@@ -11,8 +12,9 @@ export default function Catalog({ name, products }) {
 
   const itemsDelivery = products.filter(item => item.delivery)
 
+
   return (
-    <Grid item xs={12}>
+    <Grid item xs={12} className="catalog" id={id}>
       <Box className={classes.root}>
         <Typography className={classes.typograhpyCategory} variant="h5">
           {name}

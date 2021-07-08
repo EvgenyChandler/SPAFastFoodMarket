@@ -1,4 +1,4 @@
-import { Grid, Container, Box } from "@material-ui/core";
+import { Grid, Container, Box, Button } from "@material-ui/core";
 import Form from "../Form/Form";
 import Catalog from "../Catalog/Catalog";
 import ButtonDelivery from "../ButtonDelivery/ButtonDelivery";
@@ -24,6 +24,14 @@ export default function Main() {
 
   const { deliveryFlag } = useAppContext()
 
+  const scroll = (needId) => {
+   const current = document.querySelectorAll(`.catalog`)
+    current.forEach(el => {
+      if (el.id === needId) {
+        el.scrollIntoView({ block: "start", behavior: "smooth" })
+      }
+    })
+  }
 
   return (
     <main className={classes.mainContent}>
@@ -35,8 +43,19 @@ export default function Main() {
               <ButtonDelivery />
             </Box>
           </Grid>
+          <Grid item xs={12} className={classes.buttonGroup}>
+            <Box >
+              {
+                categoryList?.length ?
+                  categoryList.map((category) => <Button onClick={() => scroll(category._id)} key={category._id}>{category.name}</Button>
+                  )
+                  :
+                  null
+              }
+            </Box>
+          </Grid>
           {categoryList?.length ?
-            categoryList.map((category) => <Catalog key={category._id} name={category.name} products={ category.products }/>
+            categoryList.map((category) => <Catalog key={category._id} id={category._id} name={category.name} products={ category.products }/>
             )
             :
             "Нет товара"}

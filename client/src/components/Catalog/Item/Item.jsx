@@ -27,7 +27,9 @@ export default function Item({ item }) {
 
   return (
     <Card className={classes.root}>
-      <Box className={classes.boxImg} />
+      <Box align="center">
+        <img src={`http://localhost:4200/${item.img}`} alt={item.img} className={classes.boxImg} />
+      </Box>
       <Typography component="p"
         align="center">
         {item.name}

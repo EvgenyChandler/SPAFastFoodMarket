@@ -4,13 +4,18 @@ const useStyles = makeStyles(() => ({
   navbar: {
     background: "#FFFFFF",
     width: "100%",
+    position: "sticky",
+    top: "0",
   },
   root: {
+    background: "#FFFFFF",
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     alignContent: "center",
     flexWrap: "nowrap",
+    position: "sticky",
+    top: "0",
   },
   navbarBox: {
     width: "14px",
