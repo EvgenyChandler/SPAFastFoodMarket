@@ -24,6 +24,7 @@ app.get('/api/v1', async (req, res) => {
 
 app.post('/api/v1/order', async (req, res) => {
   console.log(req.body);
+  return res.sendStatus(200);
 });
 
 async function start() {
